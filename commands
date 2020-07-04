@@ -1,0 +1,70 @@
+########################################For a single column using pandas################################# 
+df['DataFrame Column'] = df['DataFrame Column'].fillna(0)
+
+
+########################################For a single column using numpy:############################
+df['DataFrame Column'] = df['DataFrame Column'].replace(np.nan, 0)
+
+
+#####################################For an entire DataFrame using pandas:############################
+df.fillna(0)
+
+######################################### For an entire DataFrame using numpy:###################
+df.replace(np.nan,0)
+
+
+#####################################column consist of string and number, convert ot numeric then to nan###########
+import pandas as pd
+
+df = pd.DataFrame({'values': ['700','ABC300','500','900XYZ']})
+df['values'] = pd.to_numeric(df['values'], errors='coerce')
+
+print (df)
+
+df['DataFrame Column'] = df['DataFrame Column'].fillna(0)
+
+
+############################################Example########################################################
+import pandas as pd
+
+df = pd.DataFrame({'values': ['700','ABC300','500','900XYZ']})
+df['values'] = pd.to_numeric(df['values'], errors='coerce')
+df['values'] = df['values'].fillna(0)
+
+print (df)
+
+###########################################using numpy##################################################
+import pandas as pd
+import numpy as np
+
+df = pd.DataFrame({'values': ['700','ABC300','500','900XYZ']})
+df['values'] = pd.to_numeric(df['values'], errors='coerce')
+df['values'] = df['values'].replace(np.nan, 0)
+
+print (df)
+
+############################## For entire Data Frame, so far only for one column#####################
+
+import pandas as pd
+
+df = pd.DataFrame({'values_1': ['700','ABC300','500','900XYZ'],
+                   'values_2': ['DDD200','150','350ZZZ','400'] 
+                   })
+
+df = df.apply (pd.to_numeric, errors='coerce')
+df = df.fillna(0)
+
+print (df)
+
+###################################For entire data frame using numpy#######################################
+import pandas as pd
+import numpy as np
+
+df = pd.DataFrame({'values_1': ['700','ABC300','500','900XYZ'],
+                   'values_2': ['DDD200','150','350ZZZ','400'] 
+                   })
+
+df = df.apply (pd.to_numeric, errors='coerce')
+df= df.replace(np.nan,0)
+
+print (df)
